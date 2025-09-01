@@ -25,7 +25,7 @@ float movZ=-5.0f;
 float rot = 0.0f;
 int main() {
 	glfwInit();
-	//Verificaci髇 de compatibilidad 
+	//Verificaci贸n de compatibilidad 
 	// Set all the required options for GLFW
 	/*glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -40,7 +40,7 @@ int main() {
 
 	glfwGetFramebufferSize(window, &screenWidth, &screenHeight);
 
-	//Verificaci髇 de errores de creacion  ventana
+	//Verificaci贸n de errores de creacion  ventana
 	if (nullptr == window)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -52,7 +52,7 @@ int main() {
 	glfwMakeContextCurrent(window);
 	glewExperimental = GL_TRUE;
 
-	//Verificaci髇 de errores de inicializaci髇 de glew
+	//Verificaci贸n de errores de inicializaci贸n de glew
 
 	if (GLEW_OK != glewInit()) {
 		std::cout << "Failed to initialise GLEW" << std::endl;
@@ -199,42 +199,42 @@ int main() {
 	    
 		//Aqui se dibuja la base de la mesa
 	    model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(3.0f, 0.1f, 2.0f)); //Ancho, Grosor, Profundidad
+		model = glm::scale(model, glm::vec3(1.0f, 0.5f, 1.0f)); //Ancho, Grosor, Profundidad
 		model = glm::translate(model, glm::vec3(0.0f, 0.6f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		//Aqui se dibuja la primera pata de la mesa
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.6f, 0.6f, 0.1f)); //Ancho, Grosor, Profundidad
-		model = glm::translate(model, glm::vec3(2.9f, -0.6f, 1.9f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.1f, 0.2f)); //Ancho, Grosor, Profundidad
+		model = glm::translate(model, glm::vec3(0.1f, -0.5f, 1.9f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 		
 
-		//Segunda pata de la Mesa
-		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.6f, 0.6f, 0.1f)); //Ancho, Grosor, Profundidad
-		model = glm::translate(model, glm::vec3(-2.9f, -0.6f, 1.9f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-		
-		
-		//Tercera Pata
-		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.6f, 0.6f, 0.1f)); //Ancho, Grosor, Profundidad
-		model = glm::translate(model, glm::vec3(-2.9f, -0.6f, -1.9f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-		
-		
-		//Cuarta pata
-		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.6f, 0.6f, 0.1f)); //Ancho, Grosor, Profundidad
-		model = glm::translate(model, glm::vec3(2.9f, -0.6f, -1.9f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-		
+		////Segunda pata de la Mesa
+		//model = glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(0.6f, 0.6f, 0.1f)); //Ancho, Grosor, Profundidad
+		//model = glm::translate(model, glm::vec3(-2.9f, -0.6f, 1.9f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
+		//
+		//
+		////Tercera Pata
+		//model = glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(0.6f, 0.6f, 0.1f)); //Ancho, Grosor, Profundidad
+		//model = glm::translate(model, glm::vec3(-2.9f, -0.6f, -1.9f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
+		//
+		//
+		////Cuarta pata
+		//model = glm::mat4(1.0f);
+		//model = glm::scale(model, glm::vec3(0.6f, 0.6f, 0.1f)); //Ancho, Grosor, Profundidad
+		//model = glm::translate(model, glm::vec3(2.9f, -0.6f, -1.9f));
+		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
+		//
 		
 		glBindVertexArray(0);
 
@@ -256,21 +256,19 @@ int main() {
 	 if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)  //GLFW_RELEASE
 		 glfwSetWindowShouldClose(window, true);
 	 if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)//Si presionamos D se mueve la visa a la derecha
-		 movX += 0.08f;
+		 movX += 0.1f;
 	 if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)//Si presionamos A se mueve la vista a la izquierda
-		 movX -= 0.08f;
-	 if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS)//Si presionamos  se mueve la vista a la
+		 movX -= 0.1f;
+	 if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)//Si presionamos  se mueve la vista a la
 		 movY += 0.08f;
-	 if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS)//Si presionamos  se mueve la vista a la 
+	 if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS)//Si presionamos  se mueve la vista a la 
 		 movY -= 0.08f;
 	 if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)//Si presionamos W se mueve la vista hacia atras
 		 movZ -= 0.08f;
 	 if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)//Si presionamos S se mueve la vista hacia enfrente
 		 movZ += 0.08f;
 	 if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)//Si presionamos  se mueve la vista a la izquierda
-		 rot += 0.4f;
+		 rot += 0.1f;
 	 if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)//Si presionamos  se mueve la vista a la izquierda
-		 rot -= 0.4f;
+		 rot -= 0.1f;
  }
-
-
